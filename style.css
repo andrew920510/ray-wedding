@@ -1,0 +1,136 @@
+/* 基本重設與字體 */
+body {
+    font-family: 'Noto Serif TC', serif;
+    background-color: #fdfaf7;
+    scroll-behavior: smooth;
+}
+
+/* 首圖裝飾 */
+.hero-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+/* 資訊卡片 */
+.info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid #fff1f2;
+}
+
+.map-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #9f1239;
+    font-size: 0.875rem;
+    text-decoration: underline;
+}
+
+/* 表單元件 */
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #374151;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #9f1239;
+    ring: 2px solid #fff1f2;
+}
+
+/* 選擇按鈕 */
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.radio-option:hover {
+    background-color: #fff1f2;
+}
+
+.radio-option input {
+    accent-color: #9f1239;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* 人數區塊 */
+.people-box {
+    background-color: #fff1f2;
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+.num-input {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+/* 提交按鈕 */
+.submit-button {
+    width: 100%;
+    background-color: #9f1239;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    box-shadow: 0 4px 10px rgba(159, 18, 57, 0.3);
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #881337;
+}
+
+.submit-button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* 工具類 */
+.hidden {
+    display: none;
+}
+
+/* 簡易動畫 */
+@keyframes scaleUp {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.scale-up-animation {
+    animation: scaleUp 0.5s ease-out forwards;
+}
