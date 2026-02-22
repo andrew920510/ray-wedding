@@ -13,8 +13,17 @@
 
 <body class="text-gray-800">
 
-    <section class="hero-bg h-screen flex flex-col justify-center items-center text-white text-center px-4">
+    <section class="hero-bg min-h-screen flex flex-col justify-center items-center px-4 py-12">
+        <!-- 寬螢幕桌面版：顯示單張照片 -->
+        <div class="hidden md:block w-full max-w-6xl mx-auto">
+            <img src="wedding.jpg" class="w-full h-auto rounded-2xl shadow-2xl" alt="Wedding Wide">
+        </div>
 
+        <!-- 窄螢幕行動版：顯示兩張照片垂直堆疊 -->
+        <div class="block md:hidden w-full space-y-6">
+            <img src="wedding-1.jpg" class="w-full h-auto rounded-xl shadow-lg" alt="Wedding Mobile 1">
+            <img src="wedding-2.jpg" class="w-full h-auto rounded-xl shadow-lg" alt="Wedding Mobile 2">
+        </div>
     </section>
 
 
@@ -27,13 +36,12 @@
                 <p class="text-gray-600">3/22 晚上6點</p>
 
             </div>
-            <div class="info-card">
+            <a href="https://maps.app.goo.gl/GrvQXUCcLt9ZX3iF6" target="_blank"
+                class="info-card block hover:shadow-lg transition-all hover:-translate-y-1">
                 <div class="text-[#8E2222] text-4xl mb-4">📍</div>
                 <h3 class="text-xl font-bold mb-2">宴客地點</h3>
                 <p class="text-gray-600 font-medium">桃園區德華街128號</p>
-
-
-            </div>
+            </a>
         </div>
         <div class="mt-12">
             <a href="wedding.ics" class="calendar-button">

@@ -6,24 +6,13 @@ body {
     scroll-behavior: smooth;
 }
 
-/* 首圖裝飾 */
+/* 首圖容器裝飾 */
 .hero-bg {
-    background-image: url('wedding.jpg');
-    background-size: contain;
-    /* 改為 contain 確保不裁切 */
-    background-position: center;
-    background-repeat: no-repeat;
     background-color: #F9F3E5;
-    /* 與首頁底色一致 */
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
-
-.hero-bg h1,
-.hero-bg p,
-.hero-bg div {
-    /* 強化陰影，因為背景可能變亮 */
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 2px 5px rgba(0, 0, 0, 0.5);
+    /* 與底色一致 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 資訊卡片 */
