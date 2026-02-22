@@ -3,8 +3,8 @@ const CONFIG = {
     scriptURL: 'https://script.google.com/macros/s/AKfycbwMW6lyNnGcGr1SxVF4JAe5vKtpG7YBDTrbaRyt4QlZQ_x9pz88i_kitA6NwWjSo89p/exec'
 };
 
-// 偵測 LINE 或 Instagram 內建瀏覽器並跳轉外部瀏覽器
-if (/Line|Instagram/i.test(navigator.userAgent)) {
+// 強制所有社群軟體內建瀏覽器跳轉至外部瀏覽器 (LINE, FB, IG, WeChat...)
+if (/Line|Instagram|FBAN|FBAV|MicroMessenger/i.test(navigator.userAgent)) {
     const url = new URL(window.location.href);
     if (!url.searchParams.has('openExternalBrowser')) {
         url.searchParams.set('openExternalBrowser', '1');
