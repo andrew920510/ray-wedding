@@ -3,14 +3,43 @@ const CONFIG = {
     scriptURL: 'https://script.google.com/macros/s/AKfycbwMW6lyNnGcGr1SxVF4JAe5vKtpG7YBDTrbaRyt4QlZQ_x9pz88i_kitA6NwWjSo89p/exec'
 };
 
-// 強制所有社群軟體內建瀏覽器跳轉至外部瀏覽器 (LINE, FB, IG, WeChat...)
-if (/Line|Instagram|FBAN|FBAV|MicroMessenger/i.test(navigator.userAgent)) {
-    const url = new URL(window.location.href);
-    if (!url.searchParams.has('openExternalBrowser')) {
+// --- 瀏覽器跳轉邏輯 ---
+(function () {
+    const ua = navigator.userAgent;
+    const isLine = /Line/i.test(ua);
+    const isInstagram = /Instagram/i.test(ua);
+    const isFacebook = /FBAN|FBAV/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+    const isiOS = /iPhone|iPad|iPod/i.test(ua);
+
+    // 1. LINE 的自動跳轉參數 (維持自動，因為體驗最好)
+    if (isLine && !window.location.search.includes('openExternalBrowser=1')) {
+        const url = new URL(window.location.href);
         url.searchParams.set('openExternalBrowser', '1');
         window.location.href = url.toString();
     }
-}
+
+    // 2. Android 平台：使用 Intent 強制開啟 Chrome (維持自動)
+    else if (isAndroid && (isInstagram || isFacebook)) {
+        const currentUrl = window.location.href.replace(/https?:\/\//, "");
+        window.location.href = `intent://${currentUrl}#Intent;scheme=https;package=com.android.chrome;end`;
+    }
+
+    // 3. iOS 平台 (IG/FB)：改為「點擊按鈕後」才顯示提示遮罩
+    else if (isiOS && (isInstagram || isFacebook)) {
+        window.addEventListener('DOMContentLoaded', () => {
+            const calendarBtn = document.querySelector('.calendar-button');
+            if (calendarBtn) {
+                calendarBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); // 阻止直接下載
+                    const overlay = document.getElementById('iab-overlay');
+                    if (overlay) overlay.classList.remove('hidden');
+                });
+            }
+        });
+    }
+})();
+// --------------------
 
 document.getElementById('rsvpForm').addEventListener('submit', function (e) {
     e.preventDefault();
