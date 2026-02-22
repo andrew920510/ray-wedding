@@ -9,31 +9,28 @@ const CONFIG = {
     const isLine = /Line/i.test(ua);
     const isInstagram = /Instagram/i.test(ua);
     const isFacebook = /FBAN|FBAV/i.test(ua);
+    const isWeChat = /MicroMessenger/i.test(ua);
     const isAndroid = /Android/i.test(ua);
     const isiOS = /iPhone|iPad|iPod/i.test(ua);
 
-    // 1. LINE 的自動跳轉參數 (維持自動，因為體驗最好)
+    // 1. 強制自動跳轉環境 (LINE 或 Android 的社群 App)
     if (isLine && !window.location.search.includes('openExternalBrowser=1')) {
         const url = new URL(window.location.href);
         url.searchParams.set('openExternalBrowser', '1');
         window.location.href = url.toString();
-    }
-
-    // 2. Android 平台：使用 Intent 強制開啟 Chrome (維持自動)
-    else if (isAndroid && (isInstagram || isFacebook)) {
+    } else if (isAndroid && (isInstagram || isFacebook || isWeChat)) {
         const currentUrl = window.location.href.replace(/https?:\/\//, "");
         window.location.href = `intent://${currentUrl}#Intent;scheme=https;package=com.android.chrome;end`;
     }
 
-    // 3. iOS 平台 (IG/FB)：改為「點擊按鈕後」才顯示提示遮罩
-    else if (isiOS && (isInstagram || isFacebook)) {
+    // 2. 需要手動導引環境 (iOS 的 IG, FB, WeChat)
+    else if (isiOS && (isInstagram || isFacebook || isWeChat)) {
         window.addEventListener('DOMContentLoaded', () => {
             const calendarBtn = document.querySelector('.calendar-button');
             if (calendarBtn) {
                 calendarBtn.addEventListener('click', (e) => {
-                    e.preventDefault(); // 阻止直接下載
-                    const overlay = document.getElementById('iab-overlay');
-                    if (overlay) overlay.classList.remove('hidden');
+                    e.preventDefault();
+                    document.getElementById('iab-overlay')?.classList.remove('hidden');
                 });
             }
         });
