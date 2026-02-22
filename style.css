@@ -1,18 +1,29 @@
 /* 基本重設與字體 */
 body {
     font-family: 'Noto Serif TC', serif;
-    background-color: #fdfaf7;
+    background-color: #F9F3E5;
+    /* 暖米色背景 */
     scroll-behavior: smooth;
 }
 
 /* 首圖裝飾 */
 .hero-bg {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('婚紗照.jpg');
-    background-size: auto 100%;
+    background-image: url('wedding.jpg');
+    background-size: contain;
+    /* 改為 contain 確保不裁切 */
     background-position: center;
     background-repeat: no-repeat;
-    background-color: black;
+    background-color: #F9F3E5;
+    /* 與首頁底色一致 */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.hero-bg h1,
+.hero-bg p,
+.hero-bg div {
+    /* 強化陰影，因為背景可能變亮 */
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* 資訊卡片 */
@@ -27,7 +38,7 @@ body {
 .map-link {
     display: inline-block;
     margin-top: 0.5rem;
-    color: #9f1239;
+    color: #8E2222;
     font-size: 0.875rem;
     text-decoration: underline;
 }
@@ -53,7 +64,7 @@ body {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #9f1239;
+    border-color: #8E2222;
     ring: 2px solid #fff1f2;
 }
 
@@ -74,7 +85,7 @@ body {
 }
 
 .radio-option input {
-    accent-color: #9f1239;
+    accent-color: #8E2222;
     width: 1.25rem;
     height: 1.25rem;
 }
@@ -96,18 +107,19 @@ body {
 /* 提交按鈕 */
 .submit-button {
     width: 100%;
-    background-color: #9f1239;
+    background-color: #8E2222;
+    /* 傳統暗紅 */
     color: white;
     padding: 1rem;
     border-radius: 0.75rem;
     font-weight: 700;
     font-size: 1.125rem;
-    box-shadow: 0 4px 10px rgba(159, 18, 57, 0.3);
+    box-shadow: 0 4px 10px rgba(142, 34, 34, 0.3);
     transition: background-color 0.3s;
 }
 
 .submit-button:hover {
-    background-color: #881337;
+    background-color: #6B1A1A;
 }
 
 .submit-button:disabled {
@@ -135,4 +147,25 @@ body {
 
 .scale-up-animation {
     animation: scaleUp 0.5s ease-out forwards;
+}
+
+/* 行事曆按鈕 */
+.calendar-button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: #8E2222;
+    border: 2px solid #8E2222;
+    color: white;
+    border-radius: 2rem;
+    font-weight: 700;
+    transition: all 0.3s;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(142, 34, 34, 0.2);
+}
+
+.calendar-button:hover {
+    background-color: #6B1A1A;
+    border-color: #6B1A1A;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(142, 34, 34, 0.3);
 }
