@@ -15,6 +15,28 @@ body {
     justify-content: center;
 }
 
+#desktop-hero {
+    display: none;
+    /* 手機會隱藏桌面版 */
+}
+
+#mobile-hero {
+    display: block;
+    /* 手機預設顯示 */
+}
+
+@media (min-width: 768px) {
+    #desktop-hero {
+        display: block;
+        /* 桌面顯示桌面版 */
+    }
+
+    #mobile-hero {
+        display: none;
+        /* 桌面隱藏手機版 */
+    }
+}
+
 /* 資訊卡片 */
 .info-card {
     background: white;

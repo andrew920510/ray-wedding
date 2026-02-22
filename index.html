@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Wedding | 婚禮出席統計</title>
+    <title>婚禮邀請 | 出席確認</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
@@ -14,13 +14,13 @@
 <body class="text-gray-800">
 
     <section class="hero-bg min-h-screen flex flex-col justify-center items-center px-4 py-12">
-        <!-- 寬螢幕桌面版：顯示單張照片 -->
-        <div class="hidden md:block w-full max-w-6xl mx-auto">
+        <!-- 寬螢幕桌面版 -->
+        <div id="desktop-hero" class="w-full max-w-6xl mx-auto">
             <img src="wedding.jpg" class="w-full h-auto rounded-2xl shadow-2xl" alt="Wedding Wide">
         </div>
 
-        <!-- 窄螢幕行動版：顯示兩張照片垂直堆疊 -->
-        <div class="block md:hidden w-full space-y-6">
+        <!-- 窄螢幕行動版 -->
+        <div id="mobile-hero" class="w-full space-y-6">
             <img src="wedding-1.jpg" class="w-full h-auto rounded-xl shadow-lg" alt="Wedding Mobile 1">
             <img src="wedding-2.jpg" class="w-full h-auto rounded-xl shadow-lg" alt="Wedding Mobile 2">
         </div>
